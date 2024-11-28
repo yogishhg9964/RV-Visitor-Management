@@ -36,6 +36,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "0881def1-dadc-4f0c-83b3-a100618b51b4"
+      }
+    },
+    "owner": "niranjannaiks.is23"
   }
 }
