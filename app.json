@@ -1,12 +1,7 @@
 {
   "expo": {
-<<<<<<< HEAD
-    "name": "RV-VM",
-    "slug": "RV-VM",
-=======
     "name": "rvce-vm",
     "slug": "rvce-vm",
->>>>>>> 56d63c7f2957bf81ee731fdd13472bfa4425c742
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -41,9 +36,7 @@
     ],
     "experiments": {
       "typedRoutes": true
-<<<<<<< HEAD
     }
-=======
     },
     "extra": {
       "router": {
@@ -54,6 +47,5 @@
       }
     },
     "owner": "niranjannaiks.is23"
->>>>>>> 56d63c7f2957bf81ee731fdd13472bfa4425c742
-  }
 }
+
