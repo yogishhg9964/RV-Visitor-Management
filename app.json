@@ -1,7 +1,12 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "rvce-vms",
     "slug": "rvce-vms",
+=======
+    "name": "rvce-vm",
+    "slug": "rvce-vm",
+>>>>>>> c39c41061d62258b4a27fc0d82b5e321dadac296
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -36,15 +41,28 @@
     ],
     "experiments": {
       "typedRoutes": true
+<<<<<<< HEAD
+=======
+    }
+>>>>>>> c39c41061d62258b4a27fc0d82b5e321dadac296
     },
     "extra": {
       "router": {
         "origin": false
       },
       "eas": {
+<<<<<<< HEAD
         "projectId": "ff9ca09f-80f6-4923-b9d0-0129aaff394b"
       }
     },
     "owner": "yogishhg"
   }
 }
+=======
+        "projectId": "0881def1-dadc-4f0c-83b3-a100618b51b4"
+      }
+    },
+    "owner": "niranjannaiks.is23"
+}
+
+>>>>>>> c39c41061d62258b4a27fc0d82b5e321dadac296
