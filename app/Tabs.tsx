@@ -1,91 +1,108 @@
 import React from "react";
-import { StyleSheet,View,Text,TouchableOpacity} from "react-native";
+import { StyleSheet, Platform, Dimensions } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from '@expo/vector-icons'; // Importing Ionicons
-import index from './screens/index'
-import CabEntry from './screens/CabEntry'
+import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import index from './screens/index';
+import CabEntry from './screens/CabEntry';
 import VisitorEntry from "./screens/VisitorEntry";
 import VisitorLog from "./screens/VisitorLog";
 import plus from "./screens/plus";
 import { Colors } from "@/constants/Colors";
 
-const Tab=createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
+const { width } = Dimensions.get('window');
 
-const Tabs = () => {
+export default function Tabs() {
+  const insets = useSafeAreaInsets();
+  
   return (
-      <Tab.Navigator 
+    <Tab.Navigator 
       screenOptions={{
         tabBarShowLabel: true,
+        headerShown: false,
         tabBarStyle: {
-          position: 'absolute', 
-          bottom:25,
-          left:50,
-          right:50,
+          position: 'absolute',
+          bottom: insets.bottom + 10,
+          left: width * 0.05,
+          right: width * 0.05,
           backgroundColor: '#ffffff',
-          height: 90,
-          borderRadius:15,
+          height: 70,
+          borderRadius: 15,
+          paddingBottom: Platform.OS === 'ios' ? 20 : 10,
+          paddingTop: 10,
           ...styles.tabBarShadow
         }
-        //,
-       // tabBarActiveTintColor: '#0000ff', 
-        //tabBarInactiveTintColor: '#888888',
       }}>
-        <Tab.Screen 
+      <Tab.Screen 
         name="Home" 
         component={index} 
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} /> // Icon for Home
+            <Ionicons name="home" size={24} color={color} />
           ),
-          tabBarActiveTintColor:Colors.PRIMARY
-        }}></Tab.Screen>
-        <Tab.Screen name="Visitor Entry" component={VisitorEntry} options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="person-add" size={size} color={color} /> // Icon for Visitor Entry
-          ),
-          tabBarActiveTintColor:Colors.PRIMARY
+          tabBarActiveTintColor: Colors.PRIMARY,
+          tabBarInactiveTintColor: '#999999'
         }}
-></Tab.Screen>
-        <Tab.Screen name="Cab Entry" component={CabEntry} options={{
+      />
+      <Tab.Screen 
+        name="Visitor Entry" 
+        component={VisitorEntry} 
+        options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="car" size={size} color={color} /> // Icon for Cab Entry
+            <Ionicons name="person-add" size={24} color={color} />
           ),
-          tabBarActiveTintColor:Colors.PRIMARY
-        }}></Tab.Screen>
-        <Tab.Screen name="Visitor Log" component={VisitorLog} options={{
+          tabBarActiveTintColor: Colors.PRIMARY,
+          tabBarInactiveTintColor: '#999999'
+        }}
+      />
+      <Tab.Screen 
+        name="Cab Entry" 
+        component={CabEntry} 
+        options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="clipboard" size={size} color={color} /> // Icon for Visitor Log
+            <Ionicons name="car" size={24} color={color} />
           ),
-          tabBarActiveTintColor:Colors.PRIMARY
-        }}></Tab.Screen>
-        <Tab.Screen name="More" component={plus} options={{
+          tabBarActiveTintColor: Colors.PRIMARY,
+          tabBarInactiveTintColor: '#999999'
+        }}
+      />
+      <Tab.Screen 
+        name="Visitor Log" 
+        component={VisitorLog} 
+        options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="add-circle" size={size} color={color} /> // Icon for Plus button
+            <Ionicons name="clipboard" size={24} color={color} />
           ),
-          tabBarActiveTintColor:Colors.PRIMARY
-        }} ></Tab.Screen>
-
-      </Tab.Navigator>
-  )
-
+          tabBarActiveTintColor: Colors.PRIMARY,
+          tabBarInactiveTintColor: '#999999'
+        }}
+      />
+      <Tab.Screen 
+        name="More" 
+        component={plus} 
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="add-circle" size={24} color={color} />
+          ),
+          tabBarActiveTintColor: Colors.PRIMARY,
+          tabBarInactiveTintColor: '#999999'
+        }}
+      />
+    </Tab.Navigator>
+  );
 }
 
 const styles = StyleSheet.create({
   tabBarShadow: {
-    shadowColor: '#7F5DF0',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 10,
+      height: 4,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5, // This is for Android
-  },
-  plusTabBarStyle: {
-    position: 'absolute',
-    bottom: 25,
-    left: '10%',
-    marginLeft: -30, // To center it horizontally
-  },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 5,
+    borderTopWidth: 0,
+  }
 });
-export default Tabs;
